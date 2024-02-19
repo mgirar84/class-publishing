@@ -1,0 +1,8 @@
+{
+  "name": "class-publishing",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite",
+  "id": "4aec8d89"
+}
