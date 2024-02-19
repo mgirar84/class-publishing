@@ -11,9 +11,9 @@ export const Options: FC<IconProps> = ({ color = '#ffffff' }) => (
     <path
       fill="none"
       stroke={color}
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="32"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="32"
       d="M368 128h80M64 128h240M368 384h80M64 384h240M208 256h240M64 256h80"
     />
     <circle
@@ -22,9 +22,9 @@ export const Options: FC<IconProps> = ({ color = '#ffffff' }) => (
       r="32"
       fill="none"
       stroke={color}
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="32"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="32"
     />
     <circle
       cx="176"
@@ -32,9 +32,9 @@ export const Options: FC<IconProps> = ({ color = '#ffffff' }) => (
       r="32"
       fill="none"
       stroke={color}
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="32"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="32"
     />
     <circle
       cx="336"
@@ -42,9 +42,9 @@ export const Options: FC<IconProps> = ({ color = '#ffffff' }) => (
       r="32"
       fill="none"
       stroke={color}
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="32"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="32"
     />
   </svg>
 );
