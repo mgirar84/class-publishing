@@ -1,4 +1,23 @@
 .container {
-  height: 92px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+
+  height: 5.75em;
   background-color: var(--header-primary);
+  padding: 1.125em;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  grid-column-start: 2;
+}
+
+.buttonsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2em;
+  justify-self: flex-end;
 }

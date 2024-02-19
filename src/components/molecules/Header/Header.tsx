@@ -1,8 +1,7 @@
 import type { FC } from "react";
 
-import { IonHeader, IonTitle } from "@ionic/react";
-
 import { IconButton } from "../IconButton";
+
 import "./Header.css";
 
 export type HeaderProps = {
@@ -11,12 +10,20 @@ export type HeaderProps = {
 
 export const Header: FC<HeaderProps> = ({ title }) => {
   return (
-    <IonHeader className="container">
-      <IonTitle>{title}</IonTitle>
+    <header className="container">
+      <h1 className="title">{title}</h1>
       <div className="buttonsContainer">
-        <IconButton iconName="bookmarks" />
-        <IconButton iconName="options" />
+        <IconButton
+          className="bookmarksButton"
+          iconName="bookmarks"
+          onClick={() => console.log("bookmarks")}
+        />
+        <IconButton
+          className="optionsButton"
+          iconName="options"
+          onClick={() => console.log("options")}
+        />
       </div>
-    </IonHeader>
+    </header>
   );
 };
