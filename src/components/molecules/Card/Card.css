@@ -1,4 +1,57 @@
 .cardContainer {
-  margin: 10px;
-  border: solid white 1px;
+  display: grid;
+  grid-template-rows: repeat(auto, 3);
+  row-gap: 0.5em;
+  padding: 1em 0.75em;
+}
+
+.cardTitle {
+  all: unset;
+  font-weight: 700;
+  font-size: 1.0625rem;
+
+  /* max-height needs to be 3x line-height */
+  max-height: 4.5em;
+  line-height: 1.5em;
+
+  /* restrict the title to 3 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.cardHeroContainer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.75em;
+}
+
+.cardDescription {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.25em;
+  color: #dee2e6;
+}
+
+.cardMetadataContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardDate {
+  all: unset;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5em;
+}
+
+.cardBookmark {
+  height: 1.25em;
+  width: 1em;
+  color: #dee2e6;
 }

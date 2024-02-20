@@ -3,12 +3,13 @@ import type { FC } from "react";
 import { IconProps } from "./types";
 
 type BookmarksProps = IconProps & {
-  isActive: boolean;
+  isActive?: boolean;
 };
 
 export const Bookmarks: FC<BookmarksProps> = ({
   isActive,
   color = "#ffffff",
+  ...rest
 }) => {
   if (isActive) {
     return (
@@ -16,6 +17,7 @@ export const Bookmarks: FC<BookmarksProps> = ({
         xmlns="http://www.w3.org/2000/svg"
         className="ionicon"
         viewBox="0 0 512 512"
+        {...rest}
       >
         <path
           fill={color}
@@ -34,6 +36,7 @@ export const Bookmarks: FC<BookmarksProps> = ({
       xmlns="http://www.w3.org/2000/svg"
       className="ionicon"
       viewBox="0 0 512 512"
+      {...rest}
     >
       <path
         d="M128 80V64a48.14 48.14 0 0148-48h224a48.14 48.14 0 0148 48v368l-80-64"

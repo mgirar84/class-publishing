@@ -1,6 +1,7 @@
 export type NewsArticle = {
   title: string;
   author: string;
+  description?: string;
   source: {
     id: string;
     name: string;

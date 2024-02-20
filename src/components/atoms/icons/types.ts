@@ -1,3 +1,5 @@
+import type { CSSProperties, HTMLAttributes } from "react";
+
 export type IconProps = {
-  color?: "string",
-};
+  color?: CSSProperties['color'],
+} & HTMLAttributes<HTMLOrSVGElement>
