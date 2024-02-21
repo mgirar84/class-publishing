@@ -25,7 +25,7 @@ const HomePage: FC = () => {
         {!!newsArticles?.length && (
           <IonList>
             {newsArticles.map((article, index) => (
-              <li key={article.title + index}>
+              <li key={article.article_id}>
                 <Card data={article} index={index} />
               </li>
             ))}

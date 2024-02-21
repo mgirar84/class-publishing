@@ -5,10 +5,10 @@ export type NewsArticle = {
   keywords: string[];
   creator: string[];
   video_url: string;
-  description: string;
+  description?: string;
   content: "ONLY AVAILABLE IN PAID PLANS";
   pubDate: string;
-  image_url: string;
+  image_url?: string;
   source_id: string;
   source_url: string;
   source_icon: string;
@@ -24,6 +24,7 @@ export type NewsArticle = {
 
 export type NewsResponse = {
   status: string;
+  results: NewsArticle[];
   totalResults: number;
-  articles: NewsArticle[];
+  nextpage: string;
 };

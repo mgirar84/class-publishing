@@ -7,7 +7,7 @@ import {
   useEffect,
 } from "react";
 
-import { NewsArticle } from "../types";
+import { NewsArticle, NewsResponse } from "../types";
 
 // This should come from ENV's
 const API_KEY = "pub_38701c2312fec503d32b7653b02ff18876ef2";
@@ -34,7 +34,7 @@ export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
       const response = await fetch(
         `https://newsdata.io/api/1/news?apikey=${API_KEY}&language=en`
       );
-      const responseData = await response.json();
+      const responseData: NewsResponse = await response.json();
       console.log(responseData);
       if (responseData?.results) {
         setNewsArticles(responseData?.results);
