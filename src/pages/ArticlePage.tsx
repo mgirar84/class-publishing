@@ -13,7 +13,7 @@ const ArticlePage: FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
     <>
       <IonHeader>
         <IonToolbar>
-          <Header />
+          <Header showBackButton />
         </IonToolbar>
       </IonHeader>
       <div>{JSON.stringify(article)}</div>

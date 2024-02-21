@@ -1,40 +1,25 @@
-import type { FC } from "react";
-
-import { IconButton } from "../IconButton";
+import type { FC, ReactNode } from "react";
 
 import "./Header.css";
+import { IonBackButton, IonButtons } from "@ionic/react";
 
 export type HeaderProps = {
-  onBookmarkPress: () => void;
-  onOptionsPress: () => void;
+  children?: ReactNode;
   title?: string;
+  showBackButton?: boolean;
 };
 
-export const Header: FC<HeaderProps> = ({
-  title,
-  onBookmarkPress,
-  onOptionsPress,
-}) => {
-  const bookmarkPressHandler = () => {
-    onBookmarkPress();
-  };
-  const optionsPressHandler = () => {
-    onOptionsPress();
-  };
+export const Header: FC<HeaderProps> = ({ title, showBackButton, children }) => {
   return (
     <header className="container">
       <h1 className="title">{title}</h1>
       <div className="buttonsContainer">
-        <IconButton
-          className="bookmarksButton"
-          iconName="bookmarks"
-          onClick={bookmarkPressHandler}
-        />
-        <IconButton
-          className="optionsButton"
-          iconName="options"
-          onClick={optionsPressHandler}
-        />
+        {showBackButton && (
+          <IonButtons slot="start">
+            <IonBackButton />
+          </IonButtons>
+        )}
+        {children}
       </div>
     </header>
   );

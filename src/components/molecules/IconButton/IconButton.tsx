@@ -14,9 +14,15 @@ type IconButtonProps = {
   iconName: keyof typeof IconMap;
   onClick: () => void;
   iconProps?: IconProps;
+  isActiveForced?: boolean;
 } & HTMLProps<HTMLButtonElement>;
 
-export const IconButton: FC<IconButtonProps> = ({ iconName, onClick, iconProps }) => {
+export const IconButton: FC<IconButtonProps> = ({
+  iconName,
+  onClick,
+  iconProps,
+  isActiveForced,
+}) => {
   const [isActive, setIsActive] = useState(false);
 
   const Icon = IconMap[iconName];
@@ -30,7 +36,7 @@ export const IconButton: FC<IconButtonProps> = ({ iconName, onClick, iconProps }
 
   return (
     <button className="button" onClick={onPressHandler}>
-      <Icon isActive={isActive} {...iconProps} />
+      <Icon isActive={isActiveForced || isActive} {...iconProps} />
     </button>
   );
 };

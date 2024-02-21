@@ -8,7 +8,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 
-import { Card, Header } from "../components";
+import { Card, Header, IconButton } from "../components";
 import { useNewsArticles } from "../context/NewsArticlesContext";
 
 const HomePage: FC = () => {
@@ -20,15 +20,24 @@ const HomePage: FC = () => {
   const bookmarkedArticles = getBookmarkedArticles();
   const articles = showBookmarks ? bookmarkedArticles : newsArticles;
 
+  const handleOptionsPress = () => console.log("options");
+
   return (
     <>
       <IonHeader>
         <IonToolbar>
-          <Header
-            title="Header"
-            onBookmarkPress={toggleShowBookmarks}
-            onOptionsPress={() => console.log("options press")}
-          />
+          <Header title="Header">
+            <IconButton
+              className="bookmarksButton"
+              iconName="bookmarks"
+              onClick={toggleShowBookmarks}
+            />
+            <IconButton
+              className="optionsButton"
+              iconName="options"
+              onClick={handleOptionsPress}
+            />
+          </Header>
         </IonToolbar>
       </IonHeader>
       <IonContent>
