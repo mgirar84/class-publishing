@@ -11,15 +11,15 @@ type CardProps = {
 };
 
 export const Card: FC<CardProps> = ({ data, index }) => {
-  // todo: fix this
-  const publishedDate = new Date(data.publishedAt).toDateString();
+  const publishedDate = new Date(data.pubDate).toDateString();
+  const { title, description, image_url } = data;
   return (
     <IonRouterLink routerLink={`article/${index}`} className="cardContainer">
       <div className="cardHeroContainer">
-        <img src={`https://picsum.photos/120/90?random=${index}`}></img>
-        <h2 className="cardTitle">{data.title}</h2>
+        {image_url && <img className="cardImage" src={image_url} />}
+        <h2 className="cardTitle">{title}</h2>
       </div>
-      <p>{data?.description || data.title}</p>
+      <p className="cardDescription">{description}</p>
       <div className="cardMetadataContainer">
         <p className="cardDate">{publishedDate}</p>
         <Bookmark className="cardBookmark" color="#DEE2E6" />

@@ -4,6 +4,7 @@
   grid-template-rows: repeat(auto, 3);
   row-gap: 0.5em;
   padding: 1em 0.75em;
+  border-bottom: 1px solid grey;
 }
 
 .cardTitle {
@@ -30,11 +31,27 @@
   column-gap: 0.75em;
 }
 
+.cardImage {
+  height: 90px;
+  width: 130px;
+}
+
 .cardDescription {
   font-size: 0.8125rem;
   font-weight: 400;
-  line-height: 1.25em;
   color: #dee2e6;
+
+  /* max-height needs to be 3x line-height */
+  max-height: 3.75em;
+  line-height: 1.25em;
+
+  /* restrict the title to 3 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .cardMetadataContainer {

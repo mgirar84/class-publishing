@@ -32,22 +32,25 @@ import { Route, Redirect } from "react-router";
 
 import HomePage from "./pages/HomePage";
 import ArticlePage from "./pages/ArticlePage";
+import { NewsArticlesProvider } from "./context/NewsArticlesContext";
 
 setupIonicReact();
 
 const App: FC = () => (
   <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Redirect exact path="/" to="/home" />
-        <Route path="/home" render={() => <HomePage />} exact={true} />
-        <Route
-          path="/article/:id"
-          render={() => <ArticlePage />}
-          exact={true}
-        />
-      </IonRouterOutlet>
-    </IonReactRouter>
+    <NewsArticlesProvider>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Redirect exact path="/" to="/home" />
+          <Route path="/home" render={() => <HomePage />} exact={true} />
+          <Route
+            path="/article/:id"
+            render={(props) => <ArticlePage {...props} />}
+            exact={true}
+          />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </NewsArticlesProvider>
   </IonApp>
 );
 
