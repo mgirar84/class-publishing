@@ -5,7 +5,7 @@ import { IconButton } from "../IconButton";
 import "./Header.css";
 
 export type HeaderProps = {
-  title: string;
+  title?: string;
 };
 
 export const Header: FC<HeaderProps> = ({ title }) => {
