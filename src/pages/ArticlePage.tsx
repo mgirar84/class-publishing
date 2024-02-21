@@ -7,9 +7,8 @@ import type { RouteComponentProps } from "react-router";
 import { useNewsArticles } from "../context/NewsArticlesContext";
 
 const ArticlePage: FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
-  console.log(match.params.id);
-  const { getArticlesById } = useNewsArticles();
-  const article = getArticlesById([match.params.id]);
+  const { getArticlesByIds } = useNewsArticles();
+  const article = getArticlesByIds([match.params.id]);
   return (
     <>
       <IonHeader>

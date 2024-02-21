@@ -1,4 +1,4 @@
-export type NewsArticle = {
+export type NewsArticleResponse = {
   article_id: string;
   title: string;
   link: string;
@@ -24,7 +24,9 @@ export type NewsArticle = {
 
 export type NewsResponse = {
   status: string;
-  results: NewsArticle[];
+  results: NewsArticleResponse[];
   totalResults: number;
   nextpage: string;
 };
+
+export type NewsArticle = NewsArticleResponse & { isBookmarked?: boolean };

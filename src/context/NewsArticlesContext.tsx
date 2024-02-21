@@ -15,7 +15,9 @@ const API_KEY = "pub_38701c2312fec503d32b7653b02ff18876ef2";
 type NewsArticleContextT = {
   newsArticles: NewsArticle[] | undefined;
   updateNewsArticles: (newsArticles: NewsArticle[]) => void;
-  getArticlesById: (articleIds: NewsArticle["article_id"][]) => NewsArticle[];
+  getArticlesByIds: (articleIds: NewsArticle["article_id"][]) => NewsArticle[];
+  getBookmarkedArticles: () => NewsArticle[];
+  toggleBookmarked: (articleIds: NewsArticle["article_id"]) => void;
 };
 
 type NewsProviderProps = {
@@ -25,11 +27,13 @@ type NewsProviderProps = {
 const NewsArticlesContext = createContext<NewsArticleContextT>({
   newsArticles: [],
   updateNewsArticles: () => {},
-  getArticlesById: (articleIds) => [],
+  getArticlesByIds: () => [],
+  getBookmarkedArticles: () => [],
+  toggleBookmarked: () => {},
 });
 
 export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
-  const [newsArticles, setNewsArticles] = useState<NewsArticle[]>();
+  const [newsArticles, setNewsArticles] = useState<NewsArticle[]>([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -37,8 +41,6 @@ export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
         `https://newsdata.io/api/1/news?apikey=${API_KEY}&language=en`
       );
       const responseData: NewsResponse = await response.json();
-      // todo: remove
-      console.log(responseData);
       if (responseData?.results) {
         setNewsArticles(responseData?.results);
       }
@@ -46,10 +48,25 @@ export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
     getData();
   }, []);
 
-  const getArticlesById = (articleIds: NewsArticle["article_id"][]) => {
+  const getArticlesByIds = (articleIds: NewsArticle["article_id"][]) => {
     if (!newsArticles) return [];
     return newsArticles.filter((article) =>
       articleIds.includes(article.article_id)
+    );
+  };
+
+  const getBookmarkedArticles = () => {
+    return newsArticles?.filter((article) => article.isBookmarked);
+  };
+
+  const toggleBookmarked = (id: NewsArticle["article_id"]) => {
+    setNewsArticles((prevArticles) =>
+      prevArticles.map((article) => {
+        if (article.article_id === id) {
+          return { ...article, isBookmarked: !article.isBookmarked };
+        }
+        return article;
+      })
     );
   };
 
@@ -58,7 +75,9 @@ export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
       value={{
         newsArticles,
         updateNewsArticles: setNewsArticles,
-        getArticlesById,
+        getArticlesByIds,
+        getBookmarkedArticles,
+        toggleBookmarked,
       }}
     >
       {children}

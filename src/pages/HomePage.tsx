@@ -12,21 +12,35 @@ import { Card, Header } from "../components";
 import { useNewsArticles } from "../context/NewsArticlesContext";
 
 const HomePage: FC = () => {
-  const { newsArticles } = useNewsArticles();
+  const [showBookmarks, setShowBookmarks] = useState(false);
+  const { newsArticles, toggleBookmarked, getBookmarkedArticles } =
+    useNewsArticles();
+
+  const toggleShowBookmarks = () => setShowBookmarks((prevState) => !prevState);
+  const bookmarkedArticles = getBookmarkedArticles();
+  const articles = showBookmarks ? bookmarkedArticles : newsArticles;
+
   return (
     <>
       <IonHeader>
         <IonToolbar>
-          <Header title="Header" />
+          <Header
+            title="Header"
+            onBookmarkPress={toggleShowBookmarks}
+            onOptionsPress={() => console.log("options press")}
+          />
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonSearchbar></IonSearchbar>
-        {!!newsArticles?.length && (
+        {!!articles?.length && (
           <IonList>
-            {newsArticles.map((article, index) => (
+            {articles.map((article) => (
               <li key={article.article_id}>
-                <Card data={article} index={index} />
+                <Card
+                  data={article}
+                  onBookmarkPress={() => toggleBookmarked(article.article_id)}
+                />
               </li>
             ))}
           </IonList>
