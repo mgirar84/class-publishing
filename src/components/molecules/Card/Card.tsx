@@ -16,12 +16,11 @@ export const Card: FC<CardProps> = ({ data, onBookmarkPress }) => {
   const { title, description, image_url, article_id, isBookmarked } = data;
   return (
     <div className="cardContainer">
-      <IonRouterLink
-        className="cardHeroContainer"
-        routerLink={`article/${article_id}`}
-      >
-        {image_url && <img className="cardImage" src={image_url} />}
-        <h2 className="cardTitle">{title}</h2>
+      <IonRouterLink className="cardLink" routerLink={`article/${article_id}`}>
+        <div className="cardHeroContainer">
+          {image_url && <img className="cardImage" src={image_url} />}
+          <h2 className="cardTitle">{title}</h2>
+        </div>
       </IonRouterLink>
       <p className="cardDescription">{description}</p>
       <div className="cardMetadataContainer">

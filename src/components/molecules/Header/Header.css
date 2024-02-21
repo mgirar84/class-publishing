@@ -3,6 +3,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
+  column-gap: 0.25em;
 
   height: 5.75em;
   background-color: var(--header-primary);
