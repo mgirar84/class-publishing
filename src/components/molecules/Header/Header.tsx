@@ -9,18 +9,20 @@ export type HeaderProps = {
   showBackButton?: boolean;
 };
 
-export const Header: FC<HeaderProps> = ({ title, showBackButton, children }) => {
+export const Header: FC<HeaderProps> = ({
+  title,
+  showBackButton,
+  children,
+}) => {
   return (
     <header className="container">
+      {showBackButton && (
+        <IonButtons slot="start" color="primary">
+          <IonBackButton />
+        </IonButtons>
+      )}
       <h1 className="title">{title}</h1>
-      <div className="buttonsContainer">
-        {showBackButton && (
-          <IonButtons slot="start">
-            <IonBackButton />
-          </IonButtons>
-        )}
-        {children}
-      </div>
+      <div className="buttonsContainer">{children}</div>
     </header>
   );
 };

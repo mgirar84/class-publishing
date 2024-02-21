@@ -2,7 +2,7 @@ import type { FC } from "react";
 
 import { NewsArticle } from "../../../types";
 import "./Card.css";
-import { Bookmark } from "../../atoms";
+
 import { IonRouterLink } from "@ionic/react";
 import { IconButton } from "../IconButton";
 
@@ -26,8 +26,9 @@ export const Card: FC<CardProps> = ({ data, onBookmarkPress }) => {
       <div className="cardMetadataContainer">
         <p className="cardDate">{publishedDate}</p>
         <IconButton
-          iconName="bookmark"
           onClick={onBookmarkPress}
+          isActive={isBookmarked}
+          iconName="bookmark"
           iconProps={{ className: "cardBookmark", color: "#DEE2E6" }}
         />
       </div>

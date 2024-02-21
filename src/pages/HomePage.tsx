@@ -31,6 +31,7 @@ const HomePage: FC = () => {
               className="bookmarksButton"
               iconName="bookmarks"
               onClick={toggleShowBookmarks}
+              isActive={showBookmarks}
             />
             <IconButton
               className="optionsButton"

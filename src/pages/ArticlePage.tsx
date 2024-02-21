@@ -1,22 +1,28 @@
 import { type FC } from "react";
 
-import { IonHeader, IonToolbar } from "@ionic/react";
+import { IonContent, IonHeader, IonToolbar } from "@ionic/react";
 
-import { Header } from "../components";
+import { Header, IconButton } from "../components";
 import type { RouteComponentProps } from "react-router";
 import { useNewsArticles } from "../context/NewsArticlesContext";
 
 const ArticlePage: FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
-  const { getArticlesByIds } = useNewsArticles();
-  const article = getArticlesByIds([match.params.id]);
+  const { getArticlesByIds, toggleBookmarked } = useNewsArticles();
+  const [firstArticle] = getArticlesByIds([match.params.id]);
   return (
     <>
       <IonHeader>
         <IonToolbar>
-          <Header showBackButton />
+          <Header showBackButton>
+            <IconButton
+              iconName="bookmark"
+              onClick={() => toggleBookmarked(firstArticle.article_id)}
+              isActive={firstArticle?.isBookmarked}
+            />
+          </Header>
         </IonToolbar>
       </IonHeader>
-      <div>{JSON.stringify(article)}</div>
+      <IonContent>{JSON.stringify(firstArticle)}</IonContent>
     </>
   );
 };

@@ -17,8 +17,8 @@
 }
 
 .buttonsContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 2em;
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
   justify-self: flex-end;
 }

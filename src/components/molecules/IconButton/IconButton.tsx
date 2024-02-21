@@ -1,4 +1,4 @@
-import { useState, type FC, type HTMLProps } from "react";
+import { type FC, type HTMLProps } from "react";
 
 import { Bookmark, Bookmarks, Options } from "../../atoms";
 import "./IconButton.css";
@@ -14,29 +14,21 @@ type IconButtonProps = {
   iconName: keyof typeof IconMap;
   onClick: () => void;
   iconProps?: IconProps;
-  isActiveForced?: boolean;
+  isActive?: boolean;
 } & HTMLProps<HTMLButtonElement>;
 
 export const IconButton: FC<IconButtonProps> = ({
   iconName,
   onClick,
   iconProps,
-  isActiveForced,
+  isActive,
 }) => {
-  const [isActive, setIsActive] = useState(false);
-
   const Icon = IconMap[iconName];
-
-  const toggleActive = () => setIsActive((prevState) => !prevState);
-
-  const onPressHandler = () => {
-    toggleActive();
-    onClick();
-  };
+  const onPressHandler = () => onClick();
 
   return (
     <button className="button" onClick={onPressHandler}>
-      <Icon isActive={isActiveForced || isActive} {...iconProps} />
+      <Icon isActive={isActive} {...iconProps} />
     </button>
   );
 };
