@@ -12,9 +12,9 @@ type CardProps = {
 
 export const Card: FC<CardProps> = ({ data, index }) => {
   const publishedDate = new Date(data.pubDate).toDateString();
-  const { title, description, image_url } = data;
+  const { title, description, image_url, article_id } = data;
   return (
-    <IonRouterLink routerLink={`article/${index}`} className="cardContainer">
+    <IonRouterLink routerLink={`article/${article_id}`} className="cardContainer">
       <div className="cardHeroContainer">
         {image_url && <img className="cardImage" src={image_url} />}
         <h2 className="cardTitle">{title}</h2>

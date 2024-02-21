@@ -15,6 +15,7 @@ const API_KEY = "pub_38701c2312fec503d32b7653b02ff18876ef2";
 type NewsArticleContextT = {
   newsArticles: NewsArticle[] | undefined;
   updateNewsArticles: (newsArticles: NewsArticle[]) => void;
+  getArticlesById: (articleIds: NewsArticle["article_id"][]) => NewsArticle[];
 };
 
 type NewsProviderProps = {
@@ -24,6 +25,7 @@ type NewsProviderProps = {
 const NewsArticlesContext = createContext<NewsArticleContextT>({
   newsArticles: [],
   updateNewsArticles: () => {},
+  getArticlesById: (articleIds) => [],
 });
 
 export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
@@ -35,6 +37,7 @@ export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
         `https://newsdata.io/api/1/news?apikey=${API_KEY}&language=en`
       );
       const responseData: NewsResponse = await response.json();
+      // todo: remove
       console.log(responseData);
       if (responseData?.results) {
         setNewsArticles(responseData?.results);
@@ -43,9 +46,20 @@ export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
     getData();
   }, []);
 
+  const getArticlesById = (articleIds: NewsArticle["article_id"][]) => {
+    if (!newsArticles) return [];
+    return newsArticles.filter((article) =>
+      articleIds.includes(article.article_id)
+    );
+  };
+
   return (
     <NewsArticlesContext.Provider
-      value={{ newsArticles, updateNewsArticles: setNewsArticles }}
+      value={{
+        newsArticles,
+        updateNewsArticles: setNewsArticles,
+        getArticlesById,
+      }}
     >
       {children}
     </NewsArticlesContext.Provider>

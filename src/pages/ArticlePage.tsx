@@ -6,8 +6,10 @@ import { Header } from "../components";
 import type { RouteComponentProps } from "react-router";
 import { useNewsArticles } from "../context/NewsArticlesContext";
 
-const ArticlePage: FC<RouteComponentProps> = (props) => {
-  const { newsArticles } = useNewsArticles();
+const ArticlePage: FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
+  console.log(match.params.id);
+  const { getArticlesById } = useNewsArticles();
+  const article = getArticlesById([match.params.id]);
   return (
     <>
       <IonHeader>
@@ -15,7 +17,7 @@ const ArticlePage: FC<RouteComponentProps> = (props) => {
           <Header />
         </IonToolbar>
       </IonHeader>
-      <div></div>
+      <div>{JSON.stringify(article)}</div>
     </>
   );
 };
