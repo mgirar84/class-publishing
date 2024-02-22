@@ -1,17 +1,16 @@
-/* TODO: fix colors to come from theme */
-
 .cardContainer {
   display: grid;
   grid-template-rows: repeat(auto, 3);
   row-gap: 0.5em;
   padding: 1em 0.75em;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid var(--custom-font-secondary);
 }
 
 .cardTitle {
   all: unset;
   font-weight: 700;
   font-size: 1.0625rem;
+  color: var(--custom-font-quaternary);
 
   /* max-height needs to be 3x line-height */
   max-height: 4.5em;
@@ -46,7 +45,7 @@
 .cardDescription {
   font-size: 0.8125rem;
   font-weight: 400;
-  color: #dee2e6;
+  color: var(--custom-font-tertiary);
 
   /* max-height needs to be 3x line-height */
   max-height: 3.75em;
@@ -78,5 +77,5 @@
 .cardBookmark {
   height: 1.25em;
   width: 1em;
-  color: #dee2e6;
+  color: var(--custom-font-tertiary);
 }

@@ -31,8 +31,7 @@
   font-weight: 700;
   font-size: 1.75rem;
   line-height: 1.5em;
-  /* todo */
-  color: #212529;
+  color: var(--custom-font-primary);
   margin: 0 0 0.75em 0;
 }
 
@@ -40,8 +39,7 @@
   font-weight: 400;
   font-size: 0.8125rem;
   line-height: 1em;
-  /* todo */
-  color: #868e96;
+  color: var(--custom-font-tertiary);
   margin: 0 0 1.25em 0;
 }
 
@@ -49,6 +47,5 @@
   font-weight: 400;
   font-size: 1.0625rem;
   line-height: 1.75em;
-  /* todo */
-  color: #212529;
+  color: var(--custom-font-primary);
 }

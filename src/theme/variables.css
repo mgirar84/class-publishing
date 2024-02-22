@@ -242,4 +242,8 @@ html {
   https://ionicframework.com/docs/layout/dynamic-font-scaling */
   --ion-dynamic-font: var(--ion-default-dynamic-font);
   --ion-font-family: 'Inter';
+  --custom-font-primary: #212529;
+  --custom-font-secondary: #868e96;
+  --custom-font-tertiary: #868e96;
+  --custom-font-quaternary: #000000;
 }
