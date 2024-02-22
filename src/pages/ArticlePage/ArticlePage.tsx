@@ -1,10 +1,20 @@
 import { type FC } from "react";
 
-import { IonContent, IonHeader, IonToolbar } from "@ionic/react";
+import {
+  IonBackButton,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonIcon,
+  IonToolbar,
+} from "@ionic/react";
 import type { RouteComponentProps } from "react-router";
 
-import { Article, Header, IconButton } from "../../components";
+import { Article } from "../../components";
 import { useNewsArticles } from "../../context/NewsArticlesContext";
+
+import { bookmark, bookmarkOutline } from "ionicons/icons";
 
 const ArticlePage: FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   const { getArticlesByIds, toggleBookmarked } = useNewsArticles();
@@ -12,14 +22,21 @@ const ArticlePage: FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   return (
     <>
       <IonHeader>
-        <IonToolbar>
-          <Header showBackButton>
-            <IconButton
-              iconName="bookmark"
+        <IonToolbar color="primary" >
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="#"></IonBackButton>
+          </IonButtons>
+          <IonButtons slot="end">
+            <IonButton
               onClick={() => toggleBookmarked(firstArticle.article_id)}
-              isActive={firstArticle?.isBookmarked}
-            />
-          </Header>
+            >
+              <IonIcon
+                slot="icon-only"
+                size="large"
+                icon={firstArticle.isBookmarked ? bookmark : bookmarkOutline}
+              />
+            </IonButton>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent>

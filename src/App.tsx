@@ -28,6 +28,8 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
+import "./theme/custom.css";
+
 import { Route, Redirect } from "react-router";
 
 import HomePage from "./pages/HomePage/HomePage";

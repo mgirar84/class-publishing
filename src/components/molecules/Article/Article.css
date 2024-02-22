@@ -1,8 +1,11 @@
 .articleContainer {
+  display: flex;
+  flex-direction: column;
   max-width: 600px;
   width: 100%;
   margin: auto;
-  overflow-y: scroll;
+
+  align-items: center;
 }
 
 .articleImage {
@@ -21,7 +24,6 @@
 }
 
 .articleBody {
-  margin: auto;
   @media (max-width: 600px) {
     padding: 0 1em;
   }

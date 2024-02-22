@@ -6,14 +6,17 @@
   column-gap: 0.25em;
 
   height: 5.75em;
-  background-color: var(--header-primary);
+  background-color: var(--custom-header-primary);
   padding: 1.125em;
 }
 
 .title {
-  margin: 0;
-  padding: 0;
+  all: unset;
   grid-column-start: 2;
+
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--custom-header-secondary);
 }
 
 .buttonsContainer {
