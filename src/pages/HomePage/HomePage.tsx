@@ -24,6 +24,8 @@ import {
 } from "../../utils";
 import { optionsButtonConfig } from "../../constants/optionsButtonConfig";
 
+const [firstButton, secondButton, thirdButton] = optionsButtonConfig;
+
 const HomePage: FC = () => {
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
@@ -94,28 +96,17 @@ const HomePage: FC = () => {
         <IonActionSheet
           isOpen={showOptions}
           header="Sort By"
+          // todo: move this out
           buttons={[
             {
-              text: "Newest to Oldest",
-              data: {
-                action: "date",
-              },
+              ...firstButton,
               handler: handleSortByDate,
             },
             {
-              text: "Alphabetical",
-              data: {
-                action: "title",
-              },
+              ...secondButton,
               handler: handleSortByTitle,
             },
-            {
-              text: "Cancel",
-              role: "cancel",
-              data: {
-                action: "cancel",
-              },
-            },
+            thirdButton,
           ]}
           onDidDismiss={handleCloseOptions}
           className="homePageActionSheet"

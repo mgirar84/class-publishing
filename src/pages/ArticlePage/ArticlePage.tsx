@@ -9,12 +9,11 @@ import {
   IonIcon,
   IonToolbar,
 } from "@ionic/react";
+import { bookmark, bookmarkOutline, caretBack } from "ionicons/icons";
 import type { RouteComponentProps } from "react-router";
 
 import { Article } from "../../components";
 import { useNewsArticles } from "../../context/NewsArticlesContext";
-
-import { bookmark, bookmarkOutline } from "ionicons/icons";
 
 const ArticlePage: FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   const { getArticlesByIds, toggleBookmarked } = useNewsArticles();
@@ -22,9 +21,9 @@ const ArticlePage: FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   return (
     <>
       <IonHeader>
-        <IonToolbar color="primary" >
+        <IonToolbar color="primary">
           <IonButtons slot="start">
-            <IonBackButton defaultHref="#"></IonBackButton>
+            <IonBackButton defaultHref="#" icon={caretBack} />
           </IonButtons>
           <IonButtons slot="end">
             <IonButton

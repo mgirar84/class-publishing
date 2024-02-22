@@ -1,4 +1,6 @@
 ion-toolbar {
+  /* temporary fix for back button overflowing */
+  --padding-start: 20px;
   --min-height: 44px;
 }
 
