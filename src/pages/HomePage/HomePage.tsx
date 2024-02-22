@@ -1,4 +1,4 @@
-import { type FC, useEffect, useState } from "react";
+import { type FC, useState } from "react";
 
 import {
   IonSearchbar,
@@ -12,7 +12,7 @@ import {
   IonIcon,
 } from "@ionic/react";
 
-import { Card, Header, IconButton } from "../../components";
+import { Card } from "../../components";
 import { useNewsArticles } from "../../context/NewsArticlesContext";
 import { bookmarks, bookmarksOutline, options } from "ionicons/icons";
 
