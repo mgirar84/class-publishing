@@ -21,3 +21,8 @@ iOS:
 ```bash
 TBC
 ```
+
+## Future Imrpovements
+- Unit Tests
+- Accessbility
+- Pagination
