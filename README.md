@@ -1,4 +1,5 @@
-This my news app that pulls data from https://newsdata.io/blog/news-api-response-object/
+This my news app that pulls data from https://newsdata.io/ and displays it to the user.
+It uses [Ionic](https://ionicframework.com/) and [React](https://react.dev/) 
 
 ## Getting Started
 
