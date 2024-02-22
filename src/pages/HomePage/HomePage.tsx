@@ -10,16 +10,18 @@ import {
   IonButton,
   IonTitle,
   IonIcon,
-  SearchbarInputEventDetail,
+  IonActionSheet,
 } from "@ionic/react";
 
 import { Card } from "../../components";
 import { useNewsArticles } from "../../context/NewsArticlesContext";
 import { bookmarks, bookmarksOutline, options } from "ionicons/icons";
 import { filterArticlesByBookmark, filterArticlesByString } from "../../utils";
+import { optionsButtonConfig } from "../../constants/optionsButtonConfig";
 
 const HomePage: FC = () => {
   const [showBookmarks, setShowBookmarks] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const { newsArticles, toggleBookmarked } = useNewsArticles();
@@ -30,7 +32,8 @@ const HomePage: FC = () => {
   };
 
   const toggleShowBookmarks = () => setShowBookmarks((prevState) => !prevState);
-  const handleOptionsPress = () => console.log("options");
+  const handleShowOptions = () => setShowOptions(true);
+  const handleCloseOptions = () => setShowOptions(false);
 
   const bookmarkedArticles = showBookmarks
     ? filterArticlesByBookmark(newsArticles)
@@ -53,7 +56,7 @@ const HomePage: FC = () => {
                 size="large"
               />
             </IonButton>
-            <IonButton onClick={handleOptionsPress}>
+            <IonButton onClick={handleShowOptions}>
               <IonIcon slot="icon-only" icon={options} size="large" />
             </IonButton>
           </IonButtons>
@@ -77,6 +80,13 @@ const HomePage: FC = () => {
             ))}
           </IonList>
         )}
+        <IonActionSheet
+          isOpen={showOptions}
+          header="Sort By"
+          buttons={optionsButtonConfig}
+          onDidDismiss={handleCloseOptions}
+          className="homePageActionSheet"
+        />
       </IonContent>
     </>
   );

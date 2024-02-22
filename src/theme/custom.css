@@ -1,3 +1,9 @@
 ion-toolbar {
   --min-height: 44px;
 }
+
+/* todo: handle cancel button color and font weights */
+ion-action-sheet.homePageActionSheet {
+  /* role: "destructive" button iOS styling override */
+  --ion-color-danger: #868E96;
+}
