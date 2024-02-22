@@ -22,7 +22,7 @@ iOS:
 TBC
 ```
 
-## Future Imrpovements
+## Future Improvements
 - Unit Tests
-- Accessbility
+- Accessibility
 - Pagination
