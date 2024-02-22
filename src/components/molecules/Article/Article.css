@@ -1,0 +1,54 @@
+.articleContainer {
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+  overflow-y: scroll;
+}
+
+.articleImage {
+  width: 100%;
+  max-width: 600px;
+  max-height: 450px;
+  object-fit: cover;
+  object-position: center;
+
+  margin-bottom: 1.5em;
+
+  @media (max-width: 600px) {
+    max-width: 390px;
+    max-height: 292px;
+  }
+}
+
+.articleBody {
+  margin: auto;
+  @media (max-width: 600px) {
+    padding: 0 1em;
+  }
+}
+
+.articleTitle {
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.5em;
+  /* todo */
+  color: #212529;
+  margin: 0 0 0.75em 0;
+}
+
+.articleDate {
+  font-weight: 400;
+  font-size: 0.8125rem;
+  line-height: 1em;
+  /* todo */
+  color: #868e96;
+  margin: 0 0 1.25em 0;
+}
+
+.articleDescription {
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.75em;
+  /* todo */
+  color: #212529;
+}

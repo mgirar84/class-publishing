@@ -39,8 +39,8 @@
 .cardImage {
   height: 90px;
   width: 130px;
-  background-position: center;
-  background-size: cover;
+  object-fit: cover;
+  object-position: center;
 }
 
 .cardDescription {

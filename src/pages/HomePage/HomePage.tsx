@@ -8,8 +8,8 @@ import {
   IonToolbar,
 } from "@ionic/react";
 
-import { Card, Header, IconButton } from "../components";
-import { useNewsArticles } from "../context/NewsArticlesContext";
+import { Card, Header, IconButton } from "../../components";
+import { useNewsArticles } from "../../context/NewsArticlesContext";
 
 const HomePage: FC = () => {
   const [showBookmarks, setShowBookmarks] = useState(false);

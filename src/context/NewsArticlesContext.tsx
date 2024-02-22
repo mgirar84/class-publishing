@@ -42,6 +42,7 @@ export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
       );
       const responseData: NewsResponse = await response.json();
       if (responseData?.results) {
+        console.log(responseData?.results)
         setNewsArticles(responseData?.results);
       }
     };
@@ -55,9 +56,8 @@ export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
     );
   };
 
-  const getBookmarkedArticles = () => {
-    return newsArticles?.filter((article) => article.isBookmarked);
-  };
+  const getBookmarkedArticles = () =>
+    newsArticles?.filter((article) => article.isBookmarked);
 
   const toggleBookmarked = (id: NewsArticle["article_id"]) => {
     setNewsArticles((prevArticles) =>

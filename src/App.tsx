@@ -30,8 +30,8 @@ import "./theme/variables.css";
 
 import { Route, Redirect } from "react-router";
 
-import HomePage from "./pages/HomePage";
-import ArticlePage from "./pages/ArticlePage";
+import HomePage from "./pages/HomePage/HomePage";
+import ArticlePage from "./pages/ArticlePage/ArticlePage";
 import { NewsArticlesProvider } from "./context/NewsArticlesContext";
 
 setupIonicReact();
