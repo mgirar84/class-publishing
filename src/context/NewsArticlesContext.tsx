@@ -13,10 +13,9 @@ import { NewsArticle, NewsResponse } from "../types";
 const API_KEY = "pub_38701c2312fec503d32b7653b02ff18876ef2";
 
 type NewsArticleContextT = {
-  newsArticles: NewsArticle[] | undefined;
+  newsArticles: NewsArticle[];
   updateNewsArticles: (newsArticles: NewsArticle[]) => void;
   getArticlesByIds: (articleIds: NewsArticle["article_id"][]) => NewsArticle[];
-  getBookmarkedArticles: () => NewsArticle[];
   toggleBookmarked: (articleIds: NewsArticle["article_id"]) => void;
 };
 
@@ -28,7 +27,6 @@ const NewsArticlesContext = createContext<NewsArticleContextT>({
   newsArticles: [],
   updateNewsArticles: () => {},
   getArticlesByIds: () => [],
-  getBookmarkedArticles: () => [],
   toggleBookmarked: () => {},
 });
 
@@ -42,7 +40,7 @@ export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
       );
       const responseData: NewsResponse = await response.json();
       if (responseData?.results) {
-        console.log(responseData?.results)
+        console.log(responseData?.results);
         setNewsArticles(responseData?.results);
       }
     };
@@ -55,9 +53,6 @@ export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
       articleIds.includes(article.article_id)
     );
   };
-
-  const getBookmarkedArticles = () =>
-    newsArticles?.filter((article) => article.isBookmarked);
 
   const toggleBookmarked = (id: NewsArticle["article_id"]) => {
     setNewsArticles((prevArticles) =>
@@ -76,7 +71,6 @@ export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
         newsArticles,
         updateNewsArticles: setNewsArticles,
         getArticlesByIds,
-        getBookmarkedArticles,
         toggleBookmarked,
       }}
     >

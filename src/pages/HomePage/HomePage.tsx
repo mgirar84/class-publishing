@@ -10,22 +10,35 @@ import {
   IonButton,
   IonTitle,
   IonIcon,
+  SearchbarInputEventDetail,
 } from "@ionic/react";
 
 import { Card } from "../../components";
 import { useNewsArticles } from "../../context/NewsArticlesContext";
 import { bookmarks, bookmarksOutline, options } from "ionicons/icons";
+import { filterArticlesByBookmark, filterArticlesByString } from "../../utils";
 
 const HomePage: FC = () => {
   const [showBookmarks, setShowBookmarks] = useState(false);
-  const { newsArticles, toggleBookmarked, getBookmarkedArticles } =
-    useNewsArticles();
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const { newsArticles, toggleBookmarked } = useNewsArticles();
+
+  const handleSearch = (value?: string | null) => {
+    if (!value) return setSearchQuery("");
+    setSearchQuery(value);
+  };
 
   const toggleShowBookmarks = () => setShowBookmarks((prevState) => !prevState);
-  const bookmarkedArticles = getBookmarkedArticles();
-  const articles = showBookmarks ? bookmarkedArticles : newsArticles;
-
   const handleOptionsPress = () => console.log("options");
+
+  const bookmarkedArticles = showBookmarks
+    ? filterArticlesByBookmark(newsArticles)
+    : newsArticles;
+  const searchedArticles = filterArticlesByString(
+    searchQuery,
+    bookmarkedArticles
+  );
 
   return (
     <>
@@ -47,10 +60,14 @@ const HomePage: FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonSearchbar></IonSearchbar>
-        {!!articles?.length && (
+        <IonSearchbar
+          placeholder="Search titles"
+          onIonInput={(event) => handleSearch(event.detail.value)}
+          debounce={1000}
+        />
+        {!!searchedArticles?.length && (
           <IonList>
-            {articles.map((article) => (
+            {searchedArticles.map((article) => (
               <li key={article.article_id}>
                 <Card
                   data={article}
