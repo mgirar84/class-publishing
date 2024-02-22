@@ -6,10 +6,15 @@ import {
   IonList,
   IonHeader,
   IonToolbar,
+  IonButtons,
+  IonButton,
+  IonTitle,
+  IonIcon,
 } from "@ionic/react";
 
 import { Card, Header, IconButton } from "../../components";
 import { useNewsArticles } from "../../context/NewsArticlesContext";
+import { bookmarks, bookmarksOutline, options } from "ionicons/icons";
 
 const HomePage: FC = () => {
   const [showBookmarks, setShowBookmarks] = useState(false);
@@ -25,20 +30,20 @@ const HomePage: FC = () => {
   return (
     <>
       <IonHeader>
-        <IonToolbar>
-          <Header title="Header">
-            <IconButton
-              className="bookmarksButton"
-              iconName="bookmarks"
-              onClick={toggleShowBookmarks}
-              isActive={showBookmarks}
-            />
-            <IconButton
-              className="optionsButton"
-              iconName="options"
-              onClick={handleOptionsPress}
-            />
-          </Header>
+        <IonToolbar color="primary">
+          <IonTitle>App Class</IonTitle>
+          <IonButtons slot="end">
+            <IonButton onClick={toggleShowBookmarks}>
+              <IonIcon
+                slot="icon-only"
+                icon={showBookmarks ? bookmarks : bookmarksOutline}
+                size="large"
+              />
+            </IonButton>
+            <IonButton onClick={handleOptionsPress}>
+              <IonIcon slot="icon-only" icon={options} size="large" />
+            </IonButton>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent>
