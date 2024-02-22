@@ -33,6 +33,7 @@ const NewsArticlesContext = createContext<NewsArticleContextT>({
 export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
   const [newsArticles, setNewsArticles] = useState<NewsArticle[]>([]);
 
+  // TODO: error handling
   useEffect(() => {
     const getData = async () => {
       const response = await fetch(
@@ -40,7 +41,6 @@ export const NewsArticlesProvider: FC<NewsProviderProps> = ({ children }) => {
       );
       const responseData: NewsResponse = await response.json();
       if (responseData?.results) {
-        console.log(responseData?.results);
         setNewsArticles(responseData?.results);
       }
     };

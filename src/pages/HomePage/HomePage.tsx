@@ -16,32 +16,43 @@ import {
 import { Card } from "../../components";
 import { useNewsArticles } from "../../context/NewsArticlesContext";
 import { bookmarks, bookmarksOutline, options } from "ionicons/icons";
-import { filterArticlesByBookmark, filterArticlesByString } from "../../utils";
+import {
+  type SortType,
+  sortArticles,
+  filterArticlesByBookmark,
+  filterArticlesByString,
+} from "../../utils";
 import { optionsButtonConfig } from "../../constants/optionsButtonConfig";
 
 const HomePage: FC = () => {
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>();
+  const [sortBy, setSortBy] = useState<SortType>();
 
   const { newsArticles, toggleBookmarked } = useNewsArticles();
 
-  const handleSearch = (value?: string | null) => {
-    if (!value) return setSearchQuery("");
-    setSearchQuery(value);
-  };
+  const handleSearch = (value: string | undefined | null) =>
+    setSearchQuery(value ?? "");
 
   const toggleShowBookmarks = () => setShowBookmarks((prevState) => !prevState);
   const handleShowOptions = () => setShowOptions(true);
   const handleCloseOptions = () => setShowOptions(false);
 
+  const handleSortByTitle = () => setSortBy("title");
+  const handleSortByDate = () => setSortBy("date");
+
   const bookmarkedArticles = showBookmarks
     ? filterArticlesByBookmark(newsArticles)
     : newsArticles;
-  const searchedArticles = filterArticlesByString(
-    searchQuery,
-    bookmarkedArticles
-  );
+
+  const searchedArticles = searchQuery
+    ? filterArticlesByString(searchQuery, bookmarkedArticles)
+    : bookmarkedArticles;
+
+  const sortedArticles = sortBy
+    ? sortArticles(searchedArticles, sortBy)
+    : searchedArticles;
 
   return (
     <>
@@ -68,9 +79,9 @@ const HomePage: FC = () => {
           onIonInput={(event) => handleSearch(event.detail.value)}
           debounce={1000}
         />
-        {!!searchedArticles?.length && (
+        {!!sortedArticles?.length && (
           <IonList>
-            {searchedArticles.map((article) => (
+            {sortedArticles.map((article) => (
               <li key={article.article_id}>
                 <Card
                   data={article}
@@ -83,7 +94,29 @@ const HomePage: FC = () => {
         <IonActionSheet
           isOpen={showOptions}
           header="Sort By"
-          buttons={optionsButtonConfig}
+          buttons={[
+            {
+              text: "Newest to Oldest",
+              data: {
+                action: "date",
+              },
+              handler: handleSortByDate,
+            },
+            {
+              text: "Alphabetical",
+              data: {
+                action: "title",
+              },
+              handler: handleSortByTitle,
+            },
+            {
+              text: "Cancel",
+              role: "cancel",
+              data: {
+                action: "cancel",
+              },
+            },
+          ]}
           onDidDismiss={handleCloseOptions}
           className="homePageActionSheet"
         />
