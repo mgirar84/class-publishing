@@ -59,7 +59,7 @@ const HomePage: FC = () => {
   return (
     <>
       <IonHeader>
-        <IonToolbar color="primary">
+        <IonToolbar color="primary" mode="ios">
           <IonTitle class="ion-text-center">Class Blog</IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={toggleShowBookmarks}>

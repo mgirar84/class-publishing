@@ -21,7 +21,7 @@ const ArticlePage: FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   return (
     <>
       <IonHeader>
-        <IonToolbar color="primary">
+        <IonToolbar color="primary" mode="ios">
           <IonButtons slot="start">
             <IonBackButton defaultHref="#" icon={caretBack} />
           </IonButtons>
