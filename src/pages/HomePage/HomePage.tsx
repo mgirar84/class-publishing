@@ -96,7 +96,6 @@ const HomePage: FC = () => {
         <IonActionSheet
           isOpen={showOptions}
           header="Sort By"
-          // todo: move this out
           buttons={[
             {
               ...firstButton,

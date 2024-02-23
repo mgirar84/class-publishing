@@ -18,7 +18,7 @@ npm install
 npx cap open android
 npx cap run android
 ```
-<!-- todo update this -->
+
 iOS (https://ionicframework.com/docs/api/back-button):
 ```bash
 npm install
