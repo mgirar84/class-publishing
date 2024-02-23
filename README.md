@@ -11,15 +11,20 @@ npm install
 ionic serve
 ```
 
-Android:
+Android (https://capacitorjs.com/docs/android):
 ```bash
 npm install
+
+npx cap open android
 npx cap run android
 ```
-
-iOS:
+<!-- todo update this -->
+iOS (https://ionicframework.com/docs/api/back-button):
 ```bash
-TBC
+npm install
+
+npx cap open ios
+npx cap run ios
 ```
 
 ## Future Improvements
