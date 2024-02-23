@@ -60,7 +60,7 @@ const HomePage: FC = () => {
     <>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonTitle>App Class</IonTitle>
+          <IonTitle class="ion-text-center">Class Blog</IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={toggleShowBookmarks}>
               <IonIcon

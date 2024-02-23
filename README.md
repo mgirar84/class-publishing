@@ -31,3 +31,4 @@ npx cap run ios
 - Unit Tests
 - Accessibility
 - Pagination
+- Error handling / Loading State
